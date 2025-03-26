@@ -13,6 +13,11 @@ def check_lowercase(s):
 def count_a(s):
     return s.upper().count('A')
 
+def get_filename(path):
+    import os
+    filename = os.path.basename(path)
+    return os.path.splitext(filename)[0]
+
 def main():
     print("Выберите задачу для решения:")
     print("1. Проверить, упорядочены ли строчные символы строки по возрастанию")
@@ -30,6 +35,12 @@ def main():
         s = input("Введите строку для подсчёта: ")
         count = count_a(s)
         print(f"Количество букв 'А' в строке: {count}")
+    elif choice == '3':
+        path = input("Введите путь к файлу: ")
+        filename = get_filename(path)
+        print(f"Имя файла без расширения: {filename}")
+    else:
+        print("Некорректный выбор")
 
 if __name__ == "__main__":
     main()
