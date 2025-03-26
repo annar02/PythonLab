@@ -10,6 +10,10 @@ def find_letters(text):
     lowercase_letters = sorted({char for char in text if char.islower() and char.isascii()})
     return lowercase_letters
 
+def count_chars(text):
+    latin_chars = {char.lower() for char in text if char.isalpha() and char.isascii()}
+    return len(latin_chars)
+
 def main():
     print("Выберите задачу для решения:")
     print("1. Найти все строчные символы латиницы в строке")
@@ -22,6 +26,10 @@ def main():
         text = input("Введите строку для анализа: ")
         letters = find_letters(text)
         print(f"Строчные символы латиницы в строке: {', '.join(letters)}" if letters else "Строчных символов латиницы не найдено")
+    elif choice == '2':
+        text = input("Введите строку для анализа: ")
+        count = count_chars(text)
+        print(f"Количество уникальных символов латиницы: {count}")
 
 if __name__ == "__main__":
     main()
