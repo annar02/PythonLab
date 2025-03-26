@@ -10,6 +10,9 @@ def check_lowercase(s):
     lowercase_chars = [c for c in s if c.islower()]
     return lowercase_chars == sorted(lowercase_chars)
 
+def count_a(s):
+    return s.upper().count('A')
+
 def main():
     print("Выберите задачу для решения:")
     print("1. Проверить, упорядочены ли строчные символы строки по возрастанию")
@@ -23,7 +26,10 @@ def main():
             print("Строчные символы упорядочены по возрастанию")
         else:
             print("Строчные символы НЕ упорядочены по возрастанию")
-
+    elif choice == '2':
+        s = input("Введите строку для подсчёта: ")
+        count = count_a(s)
+        print(f"Количество букв 'А' в строке: {count}")
 
 if __name__ == "__main__":
     main()
