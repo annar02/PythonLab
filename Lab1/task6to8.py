@@ -14,6 +14,10 @@ def count_chars(text):
     latin_chars = {char.lower() for char in text if char.isalpha() and char.isascii()}
     return len(latin_chars)
 
+def get_filename_without_extension(path):
+    filename = path.split('/')[-1].split('\\')[-1]
+    return filename.split('.')[0] if '.' in filename else filename
+
 def main():
     print("Выберите задачу для решения:")
     print("1. Найти все строчные символы латиницы в строке")
@@ -30,6 +34,12 @@ def main():
         text = input("Введите строку для анализа: ")
         count = count_chars(text)
         print(f"Количество уникальных символов латиницы: {count}")
+    elif choice == '3':
+        path = input("Введите путь к файлу: ")
+        filename = get_filename_without_extension(path)
+        print(f"Имя файла без расширения: {filename}")
+    else:
+        print("Некорректный выбор")
 
 if __name__ == "__main__":
     main()
