@@ -16,6 +16,18 @@ def sort_by_weight(strings):
     
     return sorted(strings, key=avg_weight)
 
+def sort_by_deviation(strings):
+    if not strings:
+        return []
+    
+    first_avg = sum(ord(c) for c in strings[0]) / len(strings[0]) if len(strings[0]) > 0 else 0
+    
+    def deviation(s):
+        avg = sum(ord(c) for c in s) / len(s) if len(s) > 0 else 0
+        return (avg - first_avg) ** 2
+    
+    return sorted(strings, key=deviation)
+
 def main():
     print("Выберете в каком порядке отсортировать строки:")
     print("1. В порядке увеличения среднего веса ASCII-кода символа строки")
@@ -29,6 +41,8 @@ def main():
     
     if choice == '1':
         result = sort_by_weight(strings)
+    elif choice == '2':
+        result = sort_by_deviation(strings)
 
     print("Результат сортировки:")
     for s in result:
