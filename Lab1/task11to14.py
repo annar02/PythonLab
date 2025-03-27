@@ -28,6 +28,21 @@ def sort_by_deviation(strings):
     
     return sorted(strings, key=deviation)
 
+def sort_by_triple(strings):
+    def max_triple_avg(s):
+        max_avg = 0
+        for i in range(len(s) - 2):
+            triple_avg = (ord(s[i]) + ord(s[i+1]) + ord(s[i+2])) / 3
+            if triple_avg > max_avg:
+                max_avg = triple_avg
+        return max_avg
+    
+    def deviation(s):
+        avg = sum(ord(c) for c in s) / len(s) if len(s) > 0 else 0
+        return (avg - max_triple_avg(s)) ** 2
+    
+    return sorted(strings, key=deviation)
+
 def main():
     print("Выберете в каком порядке отсортировать строки:")
     print("1. В порядке увеличения среднего веса ASCII-кода символа строки")
@@ -43,7 +58,8 @@ def main():
         result = sort_by_weight(strings)
     elif choice == '2':
         result = sort_by_deviation(strings)
-
+    elif choice == '3':
+        result = sort_by_triple(strings)
     print("Результат сортировки:")
     for s in result:
         print(s)
