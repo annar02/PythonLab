@@ -38,6 +38,17 @@ def count_max(arr):
             count += 1
     return count
 
+def is_alternating(arr):
+    if len(arr) < 2:
+        return True
+    
+    for i in range(1, len(arr)):
+        prev_is_int = isinstance(arr[i - 1], int)
+        current_is_int = isinstance(arr[i], int)
+        if prev_is_int == current_is_int:
+            return False
+    return True
+
 def main():
     print("Выберите какую задачу хотите решить:")
     print("1. Найти индексы двух наименьших элементов массива")
@@ -82,6 +93,9 @@ def main():
             print("В массиве нет локальных максимумов")
         else:
             print(f"Количество локальных максимумов: {result}")
+    elif choice == '4':
+        result = is_alternating(arr)
+        print(f"Чередуются ли целые и вещественные числа: {'да' if result else 'нет'}")
 
 if __name__ == "__main__":
     main()
