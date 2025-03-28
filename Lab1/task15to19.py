@@ -11,12 +11,22 @@
 56. Для введенного списка посчитать среднее арифметическое 
 непростых элементов, которые больше, чем среднее арифметическое простых."""
 
-def find_two_smallest_indices(arr):
+def find_smallest_indices(arr):
     if len(arr) < 2:
         return []
 
     sorted_with_indices = sorted(enumerate(arr), key=lambda x: x[1])
     return sorted_with_indices[0][0], sorted_with_indices[1][0]
+
+def find_missing_numbers(arr):
+    if not arr:
+        return []
+    
+    min_val = min(arr)
+    max_val = max(arr)
+    full_set = set(range(min_val, max_val + 1))
+    arr_set = set(arr)
+    return sorted(list(full_set - arr_set))
 
 def main():
     print("Выберите какую задачу хотите решить:")
@@ -48,8 +58,14 @@ def main():
         return
     
     if choice == '1':
-        result = find_two_smallest_indices(arr)
+        result = find_smallest_indices(arr)
         print(f"Индексы двух наименьших элементов: {result}")
+    elif choice == '2':
+        result = find_missing_numbers(arr)
+        if len(result) == 0:
+            print("Нет пропущенных чисел")
+        else:
+            print(f"Пропущенные числа: {result}")
 
 if __name__ == "__main__":
     main()
