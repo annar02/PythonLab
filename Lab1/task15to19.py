@@ -28,6 +28,16 @@ def find_missing_numbers(arr):
     arr_set = set(arr)
     return sorted(list(full_set - arr_set))
 
+def count_max(arr):
+    if len(arr) < 3:
+        return 0
+    
+    count = 0
+    for i in range(1, len(arr) - 1):
+        if arr[i] > arr[i - 1] and arr[i] > arr[i + 1]:
+            count += 1
+    return count
+
 def main():
     print("Выберите какую задачу хотите решить:")
     print("1. Найти индексы двух наименьших элементов массива")
@@ -66,6 +76,12 @@ def main():
             print("Нет пропущенных чисел")
         else:
             print(f"Пропущенные числа: {result}")
+    elif choice == '3':
+        result = count_max(arr)
+        if result == 0:
+            print("В массиве нет локальных максимумов")
+        else:
+            print(f"Количество локальных максимумов: {result}")
 
 if __name__ == "__main__":
     main()
