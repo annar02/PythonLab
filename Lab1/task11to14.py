@@ -10,12 +10,14 @@ ASCII-кода символа строки от среднего веса ASCII-
 тройки подряд идущих символов в строке. 
 10. В порядке увеличения среднего количества «зеркальных» троек 
 (например, «ada») символов в строке."""
+#Сортировка строк в порядке увеличения среднего веса ASCII-кода символа строки
 def sort_by_weight(strings):
     def avg_weight(s):
         return sum(ord(c) for c in s) / len(s) if len(s) > 0 else 0
     
     return sorted(strings, key=avg_weight)
 
+#Сортировка строк по отклонению от среднего веса первой строки
 def sort_by_deviation(strings):
     if not strings:
         return []
@@ -28,6 +30,7 @@ def sort_by_deviation(strings):
     
     return sorted(strings, key=deviation)
 
+#Сортировка строк по отклонению от максимального среднего тройки символов
 def sort_by_triple(strings):
     def max_triple_avg(s):
         max_avg = 0
@@ -43,6 +46,7 @@ def sort_by_triple(strings):
     
     return sorted(strings, key=deviation)
 
+#Сортировка строк по количеству зеркальных троек символов
 def sort_by_triples(strings):
     def count_mirror_triples(s):
         count = 0
