@@ -49,6 +49,27 @@ def is_alternating(arr):
             return False
     return True
 
+def avg_nonprimes(arr):
+    def is_prime(n):
+        if n < 2:
+            return False
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    
+    primes = [x for x in arr if isinstance(x, int) and is_prime(x)]
+    if not primes:
+        return 0
+    
+    primes_mean = sum(primes) / len(primes)
+    
+    non_primes = [x for x in arr if not (isinstance(x, int) and is_prime(x)) and x > primes_mean]
+    if not non_primes:
+        return 0
+    
+    return sum(non_primes) / len(non_primes)
+
 def main():
     print("Выберите какую задачу хотите решить:")
     print("1. Найти индексы двух наименьших элементов массива")
@@ -58,7 +79,11 @@ def main():
     print("5. Среднее непростых элементов, больших среднего простых")
     
     choice = input("Введите номер задачи (1-5): ")
-    
+
+    if choice != '1' and choice != '2' and choice != '3' and choice != '4' and choice != '5':
+        print("Выберите номер задачи от 1 до 5")
+        return
+
     input_str = input("Введите числа через пробел: ")
     elements = input_str.split()
     
@@ -96,6 +121,9 @@ def main():
     elif choice == '4':
         result = is_alternating(arr)
         print(f"Чередуются ли целые и вещественные числа: {'да' if result else 'нет'}")
+    elif choice == '5':
+        result = avg_nonprimes(arr)
+        print(f"Среднее арифметическое: {result}")
 
 if __name__ == "__main__":
     main()
