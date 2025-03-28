@@ -11,6 +11,7 @@
 56. Для введенного списка посчитать среднее арифметическое 
 непростых элементов, которые больше, чем среднее арифметическое простых."""
 
+#Найти индексы двух наименьших элементов массива
 def find_smallest_indices(arr):
     if len(arr) < 2:
         return []
@@ -18,6 +19,7 @@ def find_smallest_indices(arr):
     sorted_with_indices = sorted(enumerate(arr), key=lambda x: x[1])
     return sorted_with_indices[0][0], sorted_with_indices[1][0]
 
+#Найти все пропущенные числа в массиве
 def find_missing_numbers(arr):
     if not arr:
         return []
@@ -28,6 +30,7 @@ def find_missing_numbers(arr):
     arr_set = set(arr)
     return sorted(list(full_set - arr_set))
 
+#Найти количество локальных максимумов в массиве
 def count_max(arr):
     if len(arr) < 3:
         return 0
@@ -38,6 +41,7 @@ def count_max(arr):
             count += 1
     return count
 
+#Проверить, чередуются ли целые и вещественные числа
 def is_alternating(arr):
     if len(arr) < 2:
         return True
@@ -49,6 +53,7 @@ def is_alternating(arr):
             return False
     return True
 
+#Среднее арифметическое непростых элементов, которые больше среднего простых
 def avg_nonprimes(arr):
     def is_prime(n):
         if n < 2:
