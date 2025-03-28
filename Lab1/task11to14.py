@@ -43,6 +43,16 @@ def sort_by_triple(strings):
     
     return sorted(strings, key=deviation)
 
+def sort_by_triples(strings):
+    def count_mirror_triples(s):
+        count = 0
+        for i in range(len(s) - 2):
+            if s[i] == s[i+2]:
+                count += 1
+        return count / (len(s) - 2) if len(s) > 2 else 0
+    
+    return sorted(strings, key=count_mirror_triples)
+
 def main():
     print("Выберете в каком порядке отсортировать строки:")
     print("1. В порядке увеличения среднего веса ASCII-кода символа строки")
@@ -60,6 +70,12 @@ def main():
         result = sort_by_deviation(strings)
     elif choice == '3':
         result = sort_by_triple(strings)
+    elif choice == '4':
+        result = sort_by_triples(strings)
+    else:
+        print("Некорректный выбор")
+        return
+    
     print("Результат сортировки:")
     for s in result:
         print(s)
