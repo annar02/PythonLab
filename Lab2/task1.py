@@ -1,20 +1,21 @@
 # Вариант 10. Забастовки
 def count_strikes(N, K, schedules):
-    # Словарь для хранения дней забастовок каждой партии
-    party_strikes = {}
+    # Список для хранения дней забастовок каждой партии
+    party_strikes = []
     
     for i in range(K):
         a, b = schedules[i]
-        party_strikes[i] = set()
+        strikes = set()
         day = a
         while day <= N:
-            if day % 7 != 6 and day % 7 != 0:
-                party_strikes[i].add(day)
+            if day % 7 != 6 and day % 7 != 0: 
+                strikes.add(day)
             day += b
+        party_strikes.append(strikes)
     
     # Объединяем все дни забастовок в одно множество
     all_strikes = set()
-    for strikes in party_strikes.values():
+    for strikes in party_strikes:
         all_strikes.update(strikes)
     
     return len(all_strikes)

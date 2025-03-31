@@ -8,7 +8,6 @@ def read_and_sort():
             break
         strings.append(s)
     
-    # Сортировка списка на месте
     strings.sort(key=len)
     
     return strings

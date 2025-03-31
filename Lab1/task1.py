@@ -24,7 +24,6 @@ def count_simple(n):
 def sum_digits(n):
     return sum(int(digit) for digit in str(n) if int(digit) % 3 == 0)
 
-# Функция 3: Делитель числа, взаимно простой с суммой цифр
 def divisor(n):
     digit_sum = sum(int(digit) for digit in str(n))
     for divisor in range(1, n + 1):
